@@ -334,14 +334,13 @@ if __name__ == "__main__":
     # Chargement de la configuration
     config = configparser.ConfigParser()
     config.read("config.ini")
-
+    
     # Variables de configuration
-    try:
-        phone_number = config.get("secret", "phone_number")
-        pin = config.get("secret", "pin")
-    except (configparser.NoSectionError, configparser.NoOptionError):
-        print("❌ Erreur : Veuillez vérifier que 'phone_number' et 'pin' sont bien renseignés dans config.ini")
-        exit()
+    phone_number = os.environ.get("TR_PHONE")
+    pin = os.environ.get("TR_PIN")
+    if not phone_number or not pin:
+        print("❌ Variables TR_PHONE et TR_PIN manquantes.")
+    exit()
     
     # Paramètres WAF et Device (optionnels dans le config.ini, générés automatiquement sinon)
     waf_token = config.get("secret", "waf_token", fallback="")
