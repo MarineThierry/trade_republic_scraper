@@ -340,7 +340,7 @@ if __name__ == "__main__":
     pin = os.environ.get("TR_PIN")
     if not phone_number or not pin:
         print("❌ Variables TR_PHONE et TR_PIN manquantes.")
-    exit()
+        exit()
     
     # Paramètres WAF et Device (optionnels dans le config.ini, générés automatiquement sinon)
     waf_token = config.get("secret", "waf_token", fallback="")
