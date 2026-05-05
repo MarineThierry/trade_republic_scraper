@@ -390,6 +390,7 @@ if __name__ == "__main__":
 
     try:
         login_data = login_response.json()
+        print(f"Login response: {login_response.json()}")
     except ValueError:
         print("❌ L'API n'a pas renvoyé de JSON valide.")
         exit()
